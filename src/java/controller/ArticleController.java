@@ -31,15 +31,7 @@ import session.ArticleFacade;
 public class ArticleController extends HttpServlet {
     @EJB private ArticleFacade articleFacade;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -47,7 +39,7 @@ public class ArticleController extends HttpServlet {
         String path = request.getServletPath();
         switch (path) {
             case "/newArticle":
-                request.getRequestDispatcher("/page/newArticle.jsp")
+                request.getRequestDispatcher("/newArticle.jsp")
                         .forward(request, response);
                 break;
             case "/createArticle":
@@ -59,11 +51,8 @@ public class ArticleController extends HttpServlet {
                 articleFacade.create(article);
                 List<Article> listArticles = articleFacade.findAll();
                 request.setAttribute("listArticles", listArticles);
-                request.getRequestDispatcher("/page/listArticles.jsp")
-                        .forward(request, response);
+                request.getRequestDispatcher("/listArticles.jsp").forward(request, response);
                 break;
-            default:
-                throw new AssertionError();
         }
                 
     }

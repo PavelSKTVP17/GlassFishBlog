@@ -15,9 +15,9 @@ import javax.persistence.PersistenceContext;
  * @author user
  */
 @Stateless
-public class ArticleFacade extends AbstractFacade<Article> {
-
-    @PersistenceContext(unitName = "MyBlogPU")
+public class ArticleFacade extends AbstractFacade<Article> 
+{
+    @PersistenceContext(unitName = "SKTVp17BlogPU")
     private EntityManager em;
 
     @Override
@@ -29,4 +29,5 @@ public class ArticleFacade extends AbstractFacade<Article> {
         super(Article.class);
     }
     
+   
 }
